@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>メニュー</title>
+</head>
+<body>
+<div class="box" th:fragment="frag_menu" id="menu">
+
+	<form role="form" id="dummyMANAGER" th:action="@{/dummyManager}" method="post"
+			sec:authorize="hasRole('MGR')">
+	<button type="submit" class="menuBtn">マネージャ作業</button>
+	</form>	
+	
+	<form role="form" id="dummyMEMBER" th:action="@{/dummyMember}" method="post"
+			sec:authorize="hasRole('USER')">
+	<button type="submit" class="menuBtn">メンバ作業</button>
+	</form>		
+	
+    <form role="form" id="logout" th:action="@{/logout}" method="post">
+		<button type="submit" class="menuBtn">ログアウト</button>
+	</form>
+	
+	<br>
+</div>
+</body>
+</html>

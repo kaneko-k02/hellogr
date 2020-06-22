@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+		  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		  	layout:decorator="~{commons/layout}">
+<head>
+	<meta charset="UTF-8">
+	<title>〇〇システム</title>
+</head>
+<body>
+<div layout:fragment="commons/header">ヘッダー</div>
+<div layout:fragment="commons/menu">メニュー</div>
+<div layout:fragment="contents" id="content">
+	<div class="box">
+		<h3>商品一覧</h3>
+		<table>
+			<tr class="hd2">
+				<th>No.</th>
+				<th>商品コード</th>
+				<th>商品名</th>
+				<th>カテゴリ名</th>
+				<th>仕様</th>
+				<th>価格</th>
+			</tr>
+			<tr th:each="item, itemState : ${itemList}" th:object="${item}" class="row">
+				<td th:text="${itemState.count}" class="c0"></td>
+				<td th:text="*{itemCode}"></td>
+				<td th:text="*{itemName}"></td>
+				<td th:text="*{categoryName}"></td>
+				<td th:text="*{price}"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div layout:fragment="commons/footer">フッター</div>
+</body>
+</html>
